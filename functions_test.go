@@ -113,6 +113,18 @@ func TestKindIs(t *testing.T) {
 	}
 }
 
+func TestStringInSlice(t *testing.T) {
+	list := []string{"b", "c", "a"}
+	tpl := `{{stringInSlice "a" .}}`
+	if err := runtv(tpl, "t", list); err != nil {
+		t.Error(err)
+	}
+	tpl = `{{stringInSlice "z" .}}`
+	if err := runtv(tpl, "f", list); err != nil {
+		t.Error(err)
+	}
+}
+
 func runt(tpl, expect string) error {
 	return runtv(tpl, expect, "")
 }

@@ -113,13 +113,13 @@ func TestKindIs(t *testing.T) {
 	}
 }
 
-func TestStringInSlice(t *testing.T) {
-	list := []string{"b", "c", "a"}
-	tpl := `{{stringInSlice "a" .}}`
+func TestIsInSlice(t *testing.T) {
+	list := []interface{}{"b", "c", "a"}
+	tpl := `{{isInSlice "a" .}}`
 	if err := runtv(tpl, "t", list); err != nil {
 		t.Error(err)
 	}
-	tpl = `{{stringInSlice "z" .}}`
+	tpl = `{{isInSlice "z" .}}`
 	if err := runtv(tpl, "f", list); err != nil {
 		t.Error(err)
 	}

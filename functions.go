@@ -177,7 +177,7 @@ var genericMap = map[string]interface{}{
 	"kindIs":     kindIs,
 
 	//Slices
-	"stringInSlice": stringInSlice,
+	"isInSlice": isInSlice,
 }
 
 func split(sep, orig string) map[string]string {
@@ -320,7 +320,7 @@ func kindOf(src interface{}) string {
 	return reflect.ValueOf(src).Kind().String()
 }
 
-func stringInSlice(a string, list []string) string {
+func isInSlice(a interface{}, list []interface{}) string {
 	for _, b := range list {
 		if b == a {
 			return "t"
